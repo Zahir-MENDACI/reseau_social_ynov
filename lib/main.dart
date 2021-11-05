@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:reseau_social_ynov/functions/firebaseHelper.dart';
 import 'package:reseau_social_ynov/inscription.dart';
+import 'package:reseau_social_ynov/mapsPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,7 +45,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print(user);
     return Scaffold(
       appBar: AppBar(
         title: Text(user != null ? "connecté" : ""),
@@ -140,7 +140,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     });
                   },
-                  child: Text("S'inscrire"))
+                  child: Text("S'inscrire")),
+              ElevatedButton(
+                  onPressed: () async {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MapsPage()),
+                    );
+                    setState(() {
+
+                    });
+                  },
+                  child: Text("maps page"))
 
             ],
           )

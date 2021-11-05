@@ -16,6 +16,11 @@ class Inscription extends StatefulWidget {
 
 class InscriptionState extends State<Inscription> {
 
+  bool isMan=true;
+
+  final nomController = TextEditingController();
+  final prenomController = TextEditingController();
+  final dateController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -30,6 +35,49 @@ class InscriptionState extends State<Inscription> {
       body: Center(
           child: Column(
             children: [
+              Container(
+                width: 300,
+                child: TextField(
+                  controller: nomController,
+                  decoration: InputDecoration(
+                      hintText: "Nom"
+                  ),
+                ),
+              ),
+              Container(
+                width: 300,
+                child: TextField(
+                  controller: prenomController,
+                  decoration: InputDecoration(
+                      hintText: "Prenom"
+                  ),
+                ),
+              ),
+              Container(
+                width: 300,
+                child: TextField(
+                  controller: dateController,
+                  decoration: InputDecoration(
+                      hintText: "Date de naissance"
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Femme'),
+                  Switch.adaptive(
+                      value: isMan,
+                      onChanged: (bool value){
+                        setState(() {
+                          isMan = value;
+                        });
+                      }
+                  ),
+                  Text('Homme')
+
+                ],
+              ),
               Container(
                 width: 300,
                 child: TextField(
@@ -51,10 +99,19 @@ class InscriptionState extends State<Inscription> {
               ),
               ElevatedButton(
                   onPressed: () async {
+                    Map<String,dynamic> map ={
+                      "nom":nomController.text,
+                      "prenom":prenomController.text,
+                      "date":dateController.text,
+                      "isMan":isMan,
+                      "email": emailController
+                    };
+
                       final authResult = FirebaseHelper().inscription(emailController.text, passwordController.text)
                           .then((value) {
                         Navigator.pop(context);
                       }).catchError((e){
+                        print(e);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(e.toString()),

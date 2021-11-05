@@ -14,6 +14,8 @@ class FirebaseHelper {
         email: email, password: password);
 
     final user = authResult.user;
+    print(user);
+    // FirebaseFirestore.instance.collection("utilisateur").doc(uid).set(map);
     return user;
   }
 
@@ -25,5 +27,10 @@ class FirebaseHelper {
         password: password
     );
     return user;
+  }
+
+
+  addUser(Map<String, dynamic> map, String uid) {
+    FirebaseFirestore.instance.collection("utilisateur").doc(uid).set(map);
   }
 }

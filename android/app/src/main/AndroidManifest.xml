@@ -3,6 +3,8 @@
    <application
         android:label="reseau_social_ynov"
         android:icon="@mipmap/ic_launcher">
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyDvuID8aBV5jQGYKo8BOBTkYcWLnxPEOcQ"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
