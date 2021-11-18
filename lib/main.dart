@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:reseau_social_ynov/functions/firebase_helper.dart';
 import 'package:reseau_social_ynov/inscription.dart';
 import 'package:reseau_social_ynov/maps_page.dart';
+import 'package:reseau_social_ynov/profilPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -152,7 +153,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     });
                   },
-                  child: Text("maps page"))
+                  child: Text("maps page")),
+              ElevatedButton(
+                  onPressed: () async {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfilPage()),
+                    );
+                    setState(() {
+
+                    });
+                  },
+                  child: Text("page profil"))
 
             ],
           )
