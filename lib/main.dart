@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:reseau_social_ynov/functions/firebaseHelper.dart';
+import 'package:reseau_social_ynov/functions/firebase_helper.dart';
 import 'package:reseau_social_ynov/inscription.dart';
-import 'package:reseau_social_ynov/mapsPage.dart';
+import 'package:reseau_social_ynov/maps_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -97,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         );
                       }
                       ).catchError((e){
+                        print("-------$e");
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(e.toString()),

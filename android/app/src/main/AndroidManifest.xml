@@ -4,7 +4,7 @@
         android:label="reseau_social_ynov"
         android:icon="@mipmap/ic_launcher">
        <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyDvuID8aBV5jQGYKo8BOBTkYcWLnxPEOcQ"/>
+           android:value="AIzaSyAMuQfEzxVjoU0W_hmJlkPrDJN_d4Zx1u4"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

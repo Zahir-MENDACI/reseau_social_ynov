@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:reseau_social_ynov/functions/firebaseHelper.dart';
+import 'package:reseau_social_ynov/functions/firebase_helper.dart';
 
 class Inscription extends StatefulWidget {
 
@@ -104,10 +104,11 @@ class InscriptionState extends State<Inscription> {
                       "prenom":prenomController.text,
                       "date":dateController.text,
                       "isMan":isMan,
-                      "email": emailController
+                      "email": emailController.text,
+                      "password": passwordController.text
                     };
 
-                      final authResult = FirebaseHelper().inscription(emailController.text, passwordController.text)
+                      final authResult = FirebaseHelper().inscription(map)
                           .then((value) {
                         Navigator.pop(context);
                       }).catchError((e){

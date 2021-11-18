@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:reseau_social_ynov/functions/firebase_helper.dart';
 import 'package:reseau_social_ynov/inscription.dart';
 
 
@@ -20,6 +22,19 @@ class MapsPageState extends State<MapsPage> {
   late Position maPosition;
 
   Set<Marker> markers = {};
+
+    @override
+  void initState() {
+    super.initState();
+    Geolocator.getPositionStream(desiredAccuracy: LocationAccuracy.low).listen((event) {
+        maPosition = event;
+        print("------------------------------$maPosition");
+        monument = CameraPosition(
+            target: LatLng(maPosition.latitude, maPosition.longitude),
+            zoom: 15
+        );
+    });
+  }
 
 
 
@@ -46,7 +61,7 @@ class MapsPageState extends State<MapsPage> {
             markerId: MarkerId('idtest2'),
             position: LatLng(48.90175526973908, 2.2053522441749096),
             infoWindow: InfoWindow(
-                title: "test2",
+                title: "test3",
                 snippet: "testttt2",
                 onTap: (){
                   Navigator.push(
@@ -60,19 +75,8 @@ class MapsPageState extends State<MapsPage> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    Geolocator.getPositionStream(desiredAccuracy: LocationAccuracy.low).listen((event) {
-      setState(() {
-        maPosition = event;
-        monument = CameraPosition(
-            target: LatLng(maPosition.latitude, maPosition.longitude),
-            zoom: 15
-        );
-      });
-    });
-  }
+
+  
 
   CameraPosition monument = CameraPosition(
       target: LatLng(48.901925969588696, 2.2080655749616493),
@@ -87,7 +91,6 @@ class MapsPageState extends State<MapsPage> {
 
   @override
   Widget build(BuildContext context) {
-    print(markers);
     return Scaffold(
         appBar: AppBar(
           title: Text("title"),
