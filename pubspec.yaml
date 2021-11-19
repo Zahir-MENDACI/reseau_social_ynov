@@ -41,6 +41,9 @@ dependencies:
   google_maps_flutter: ^2.1.0
   geolocator: 7.6.2
   location: ^4.3.0
+  custom_info_window: ^1.0.1
+  file_picker: ^4.2.3
+  rxdart: ^0.27.2
 
 dev_dependencies:
   flutter_test:
